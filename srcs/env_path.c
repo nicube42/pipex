@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   env_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 13:36:32 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/20 14:11:36 by ndiamant         ###   ########.fr       */
+/*   Created: 2023/04/20 15:07:18 by ndiamant          #+#    #+#             */
+/*   Updated: 2023/04/20 15:11:07 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_error(void)
+void	ft_format_env_path(t_pipe *vars)
 {
-	ft_printf("Error\n");
-	exit(1);
+	
 }

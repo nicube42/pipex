@@ -10,7 +10,7 @@ PATH_OBJS =			./objs/
 LIBFT = $(PATH_LIBFT)libftprintf.a
 NAME = pipex
 
-FILES = $(PATH_SRC)pipex.c 
+FILES = $(PATH_SRC)main.c $(PATH_SRC)pipex.c $(PATH_SRC)parsing.c $(PATH_SRC)utils.c $(PATH_SRC)env_path.c
 OBJS = $(patsubst $(PATH_SRC)%.c, $(PATH_OBJS)%.o, $(FILES))
 
 CC = clang
