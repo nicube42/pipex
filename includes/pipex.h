@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/20 15:11:06 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:39:48 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,30 @@
 
 typedef struct s_pipe
 {
+	char	**envp;
+	char	**av;
+	int		ac;
 	int		infile;
 	int		outfile;
-	char	*cmd1;
-	char	*path1;
-	char	*cmd2;
+	char	**cmd1;
+	char	*path;
+	char	**splitted_path;
+	char	**cmd2;
 	int		end[2];
-	pid_t	parent;
+	pid_t	id;
 
 }t_pipe;
 
 int		main(int ac, char **av, char **envp);
 
-void	ft_open_input(t_pipe *vars, char **av);
+void	ft_open_in_create_out(t_pipe *vars, char **av);
 void	ft_pipex(t_pipe *vars, char **av, char **envp);
 
+void	ft_child_process(t_pipe *vars);
+void	ft_parent_process(t_pipe *vars);
+
 void	ft_error(void);
+
+void    ft_parsing_execve(t_pipe *vars, char **av, char **envp);
 
 #endif

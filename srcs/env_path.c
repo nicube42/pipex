@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:07:18 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/20 15:11:07 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/24 09:39:04 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_format_env_path(t_pipe *vars)
 {
-	
+	(void) vars;
 }
