@@ -6,35 +6,23 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:57:22 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/24 19:53:52 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/25 19:44:05 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 #include <stdio.h>
 
-void	ft_open_in_create_out(t_pipe *vars, char **av)
-{
-	vars->infile = open (av[1], O_RDONLY);
-	if (vars->infile < 0)
-		ft_error();
-	vars->outfile = open(av[4], O_CREAT | O_WRONLY | O_TRUNC, 0777);
-	if (vars->outfile < 0)
-		ft_error();
-}
-
-void	ft_pipex(t_pipe *vars, char **av, char **envp)
+void	ft_pipex(t_pipe *vars)
 {
 	int	error;
 
-	(void) av;
-	(void) envp;
 	error = pipe(vars->end);
 	if (error < 0)
-		ft_error();
+		ft_error("piping error");
 	vars->id = fork();
 	if (vars->id < 0)
-		ft_error();
+		ft_error("fork error");
 	if (!vars->id)
 		ft_child_process(vars);
 	waitpid(vars->id, NULL, 0);
@@ -43,8 +31,8 @@ void	ft_pipex(t_pipe *vars, char **av, char **envp)
 
 void	ft_child_process(t_pipe *vars)
 {
-	int	fd2;
-	int	i;
+	int		fd2;
+	int		i;
 	char	*cmd;
 
 	fd2 = dup2(vars->infile, STDIN_FILENO);
@@ -57,6 +45,7 @@ void	ft_child_process(t_pipe *vars)
 		execve(cmd, vars->cmd1, vars->envp);
 		free(cmd);
 	}
+	ft_putstr_fd("Error : first command not found\n", 2);
 }
 
 void	ft_parent_process(t_pipe *vars)
@@ -74,4 +63,5 @@ void	ft_parent_process(t_pipe *vars)
 		execve(cmd, vars->cmd2, vars->envp);
 		free(cmd);
 	}
+	ft_putstr_fd("Error : second command not found\n", 2);
 }
