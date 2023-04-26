@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:57:22 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/25 19:44:05 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/26 15:59:49 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_child_process(t_pipe *vars)
 	i = -1;
 	while (vars->splitted_path[++i])
 	{
-		cmd = ft_strjoin(vars->splitted_path[i], vars->cmd1[0]); // protect your ft_join
+		cmd = ft_strjoin(vars->splitted_path[i], vars->cmd1[0]);
 		execve(cmd, vars->cmd1, vars->envp);
 		free(cmd);
 	}
@@ -59,7 +59,7 @@ void	ft_parent_process(t_pipe *vars)
 	i = -1;
 	while (vars->splitted_path[++i])
 	{
-		cmd = ft_strjoin(vars->splitted_path[i], vars->cmd2[0]); // protect your ft_join
+		cmd = ft_strjoin(vars->splitted_path[i], vars->cmd2[0]);
 		execve(cmd, vars->cmd2, vars->envp);
 		free(cmd);
 	}

@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/25 09:48:53 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/26 15:39:01 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void	ft_parent_process(t_pipe *vars);
 void	ft_error(char *error_msg);
 void	ft_parsing_execve(t_pipe *vars);
 void	ft_open_in_create_out(t_pipe *vars);
+void	ft_free_tab(char **tab);
 
 #endif
