@@ -1,0 +1,9 @@
+Makefile
+ascii_art
+includes
+input.txt
+libft_printf
+objs
+output.txt
+pipex
+srcs

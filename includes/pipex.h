@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/28 14:25:44 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:32:10 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ typedef struct s_pipe
 	int		infile;
 	int		outfile;
 	char	**cmd1;
-	char	*path;
 	char	**splitted_path;
 	char	**cmd2;
-	char	**pathcmd1;
-	char	**pathcmd2;
+	char	*pathcmd1;
+	char	*pathcmd2;
 	int		end[2];
 	pid_t	id;
 	pid_t	id2;
@@ -50,7 +49,6 @@ void	ft_pipex(t_pipe *vars);
 void	ft_child_process(t_pipe *vars);
 void	ft_child_process_2(t_pipe *vars);
 void	ft_parent_process(t_pipe *vars);
-void	ft_open_in_create_out(t_pipe *vars);
 
 void	ft_error(char *error_msg);
 void	ft_parsing_execve(t_pipe *vars);
