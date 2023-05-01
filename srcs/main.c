@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:11:07 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/28 17:24:05 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/28 22:23:50 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int ac, char **av, char **envp)
 
 	vars.ac = ac;
 	vars.av = av;
+	vars.cmd1 = ft_split(av[2], ' ');
+	vars.cmd2 = ft_split(av[3], ' ');
 	vars.envp = envp;
 	if (ac != 5)
 	{

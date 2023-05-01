@@ -1,9 +1,14 @@
-Makefile
-ascii_art
-includes
-input.txt
-libft_printf
-objs
-output.txt
-pipex
-srcs
+total 104
+drwxr-xr-x  13 nicolasdiamantis  staff    416 29 avr 11:18 .
+drwxr-xr-x  18 nicolasdiamantis  staff    576 28 avr 17:06 ..
+-rw-r--r--@  1 nicolasdiamantis  staff   6148 29 avr 11:18 .DS_Store
+drwxr-xr-x  12 nicolasdiamantis  staff    384 29 avr 11:12 .git
+-rw-r--r--   1 nicolasdiamantis  staff   1164 28 avr 17:06 Makefile
+drwxr-xr-x   3 nicolasdiamantis  staff     96 28 avr 17:06 ascii_art
+drwxr-xr-x   3 nicolasdiamantis  staff     96 28 avr 17:06 includes
+-rw-r--r--   1 nicolasdiamantis  staff   3334 28 avr 17:06 input.txt
+drwxr-xr-x   8 nicolasdiamantis  staff    256 28 avr 22:20 libft_printf
+drwxr-xr-x   5 nicolasdiamantis  staff    160 29 avr 11:18 objs
+-rw-r--r--   1 nicolasdiamantis  staff      0 29 avr 23:57 output.txt
+-rwxr-xr-x   1 nicolasdiamantis  staff  35650 29 avr 11:18 pipex
+drwxr-xr-x   5 nicolasdiamantis  staff    160 28 avr 17:06 srcs

@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:57:22 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/28 21:23:41 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/29 11:18:18 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_child_process(t_pipe *vars)
 	dup2(vars->infile, STDIN_FILENO);
 	dup2(vars->end[1], STDOUT_FILENO);
 	close(vars->end[0]);
+	fprintf(stderr, "%s\n", vars->cmd1[0]);
 	if (execve(vars->pathcmd1, vars->cmd1, vars->envp) < 0)
 		ft_error("error");
 }

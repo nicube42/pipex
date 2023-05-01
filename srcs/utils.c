@@ -6,7 +6,7 @@
 /*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:36:32 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/28 21:20:18 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/04/28 22:21:49 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	ft_parsing_execve(t_pipe *vars)
 	i = -1;
 	while (vars->splitted_path[++i])
 		vars->splitted_path[i] = ft_strjoin(vars->splitted_path[i], "/");
-	vars->cmd1 = ft_split(vars->av[2], ' ');
-	vars->cmd2 = ft_split(vars->av[3], ' ');
 	if (!ft_check_cmd1_exist(vars))
 		ft_printf("Pipex: command not found: %s\n", vars->cmd1[0]);
 	if (!ft_check_cmd2_exist(vars))
