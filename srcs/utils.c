@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:36:32 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/28 22:21:49 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/05/01 14:45:34 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@ void	ft_parsing_execve(t_pipe *vars)
 	i = -1;
 	while (vars->splitted_path[++i])
 		vars->splitted_path[i] = ft_strjoin(vars->splitted_path[i], "/");
-	if (!ft_check_cmd1_exist(vars))
-		ft_printf("Pipex: command not found: %s\n", vars->cmd1[0]);
-	if (!ft_check_cmd2_exist(vars))
-		ft_printf("Pipex: command not found: %s\n", vars->cmd2[0]);
-	if (!ft_check_cmd1_exist(vars) || !ft_check_cmd2_exist(vars))
-		exit(1);
 }
 
 void	ft_free_tab(char **tab)
