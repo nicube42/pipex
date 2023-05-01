@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:36:32 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/05/01 14:45:34 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:48:18 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,19 @@ void	ft_free_tab(char **tab)
 
 	i = -1;
 	while (tab[++i])
-	{
 		free(tab[i]);
-	}
 	free(tab);
 	tab = NULL;
+}
+
+void	ft_free_all(t_pipe *vars)
+{
+	if (vars->cmd2[0])
+		ft_free_tab(vars->cmd2);
+	if (vars->splitted_path[0])
+		ft_free_tab(vars->splitted_path);
+	if (vars->cmd1[0])
+		ft_free_tab(vars->cmd1);
 }
 
 int	ft_check_cmd1_exist(t_pipe *vars)

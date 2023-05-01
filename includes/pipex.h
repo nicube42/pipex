@@ -6,7 +6,7 @@
 /*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/05/01 14:45:43 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:16:00 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	ft_parsing_execve(t_pipe *vars);
 void	ft_free_tab(char **tab);
 int		ft_check_cmd1_exist(t_pipe *vars);
 int		ft_check_cmd2_exist(t_pipe *vars);
+void	ft_free_all(t_pipe *vars);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 12:10:32 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/04/28 22:15:53 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/05/01 14:50:53 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
