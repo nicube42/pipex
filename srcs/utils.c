@@ -3,36 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:36:32 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/05/01 15:48:18 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:32:55 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_error(char *error_msg)
+void	ft_error(char *error_msg, t_pipe *vars)
 {
 	perror(error_msg);
+	ft_free_all(vars);
 	exit(1);
-}
-
-void	ft_parsing_execve(t_pipe *vars)
-{
-	int		i;
-	char	*full_path;
-
-	i = 0;
-	while (vars->envp[++i])
-	{
-		if (!ft_strncmp(vars->envp[i], "PATH=", 5))
-			full_path = vars->envp[i] + 5;
-	}
-	vars->splitted_path = ft_split(full_path, ':');
-	i = -1;
-	while (vars->splitted_path[++i])
-		vars->splitted_path[i] = ft_strjoin(vars->splitted_path[i], "/");
 }
 
 void	ft_free_tab(char **tab)
@@ -50,8 +34,6 @@ void	ft_free_all(t_pipe *vars)
 {
 	if (vars->cmd2[0])
 		ft_free_tab(vars->cmd2);
-	if (vars->splitted_path[0])
-		ft_free_tab(vars->splitted_path);
 	if (vars->cmd1[0])
 		ft_free_tab(vars->cmd1);
 }

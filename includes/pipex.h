@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 11:22:03 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/05/01 15:16:00 by ndiamant         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:49:26 by nicolasdiam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ typedef struct s_pipe
 
 }t_pipe;
 
-int		main(int ac, char **av, char **envp);
+int			main(int ac, char **av, char **envp);
 
-void	ft_pipex(t_pipe *vars);
-void	ft_child_process(t_pipe *vars);
-void	ft_child_process_2(t_pipe *vars);
-void	ft_parent_process(t_pipe *vars);
+void		ft_parsing_execve(t_pipe *vars);
+void		ft_pipex(t_pipe *vars);
+static void	ft_child_process(t_pipe *vars);
+static void	ft_child_process_2(t_pipe *vars);
+static void	ft_parent_process(t_pipe *vars);
 
-void	ft_error(char *error_msg);
-void	ft_parsing_execve(t_pipe *vars);
-void	ft_free_tab(char **tab);
-int		ft_check_cmd1_exist(t_pipe *vars);
-int		ft_check_cmd2_exist(t_pipe *vars);
-void	ft_free_all(t_pipe *vars);
+void		ft_error(char *error_msg, t_pipe *vars);
+void		ft_free_tab(char **tab);
+int			ft_check_cmd1_exist(t_pipe *vars);
+int			ft_check_cmd2_exist(t_pipe *vars);
+void		ft_free_all(t_pipe *vars);
 
 #endif
