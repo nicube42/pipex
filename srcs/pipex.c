@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:57:22 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/05/01 18:48:40 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/05/02 14:55:43 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,43 @@ void	ft_parsing_execve(t_pipe *vars)
 		vars->splitted_path[i] = ft_strjoin(vars->splitted_path[i], "/");
 }
 
+static void	ft_child_process(t_pipe *vars)
+{
+	if (!ft_check_cmd1_exist(vars))
+		ft_error("Pipex: command 1 not found", vars);
+	dup2(vars->infile, STDIN_FILENO);
+	dup2(vars->end[1], STDOUT_FILENO);
+	if (close(vars->end[0]) < 0)
+		ft_error("pipe close error", vars);
+	if (close(vars->end[1]) < 0)
+		ft_error("pipe close error", vars);
+	if (execve(vars->pathcmd1, vars->cmd1, vars->envp) < 0)
+		ft_error("error", vars);
+}
+
+static void	ft_child_process_2(t_pipe *vars)
+{
+	if (!ft_check_cmd2_exist(vars))
+		ft_error("Pipex: command 2 not found", vars);
+	dup2(vars->end[0], STDIN_FILENO);
+	if (close(vars->end[1]) < 0)
+		ft_error("pipe close error", vars);
+	if (close(vars->end[0]) < 0)
+		ft_error("pipe close error", vars);
+	dup2(vars->outfile, STDOUT_FILENO);
+	if (execve(vars->pathcmd2, vars->cmd2, vars->envp) < 0)
+		ft_error("error", vars);
+}
+
+static void	ft_parent_process(t_pipe *vars)
+{
+	ft_free_all(vars);
+	if (close(vars->infile) < 0)
+		ft_error("input close error", vars);
+	if (close(vars->outfile) < 0)
+		ft_error("output close error", vars);
+}
+
 void	ft_pipex(t_pipe *vars)
 {
 	if (pipe(vars->end) < 0)
@@ -51,45 +88,4 @@ void	ft_pipex(t_pipe *vars)
 	waitpid(vars->id, NULL, 0);
 	waitpid(vars->id2, NULL, 0);
 	ft_parent_process(vars);
-}
-
-static void	ft_child_process(t_pipe *vars)
-{
-	if (!ft_check_cmd1_exist(vars))
-		ft_error("Pipex: command 1 not found", vars);
-	if (dup2(vars->infile, STDIN_FILENO < 0))
-		ft_error("dup2 error", vars);
-	if (dup2(vars->end[1], STDOUT_FILENO < 0))
-		ft_error("dup2 error", vars);
-	if (close(vars->end[0]) < 0)
-		ft_error("pipe close error", vars);
-	if (close(vars->end[1]) < 0)
-		ft_error("pipe close error", vars);
-	if (execve(vars->pathcmd1, vars->cmd1, vars->envp) < 0)
-		ft_error("error", vars);
-}
-
-static void	ft_child_process_2(t_pipe *vars)
-{
-	if (!ft_check_cmd2_exist(vars))
-		ft_error("Pipex: command 2 not found", vars);
-	if (dup2(vars->end[0], STDIN_FILENO) < 0)
-		ft_error("dup2 error", vars);
-	if (close(vars->end[1]) < 0)
-		ft_error("pipe close error", vars);
-	if (close(vars->end[0]) < 0)
-		ft_error("pipe close error", vars);
-	if (dup2(vars->outfile, STDOUT_FILENO) < 0)
-		ft_error("dup2 error", vars);
-	if (execve(vars->pathcmd2, vars->cmd2, vars->envp) < 0)
-		ft_error("error", vars);
-}
-
-static void	ft_parent_process(t_pipe *vars)
-{
-	ft_free_all(vars);
-	if (close(vars->infile) < 0)
-		ft_error("input close error", vars);
-	if (close(vars->outfile) < 0)
-		ft_error("output close error", vars);
 }
