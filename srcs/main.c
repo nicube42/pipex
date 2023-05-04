@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nicolasdiamantis <nicolasdiamantis@stud    +#+  +:+       +#+        */
+/*   By: ndiamant <ndiamant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:11:07 by ndiamant          #+#    #+#             */
-/*   Updated: 2023/05/01 18:43:31 by nicolasdiam      ###   ########.fr       */
+/*   Updated: 2023/05/04 17:40:12 by ndiamant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int	main(int ac, char **av, char **envp)
 
 	vars.ac = ac;
 	vars.av = av;
+	if (ac != 5)
+	{
+		ft_printf("4 args needed <input> <cmd1> <cmd2> <output>\n");
+		exit(1);
+	}
 	vars.cmd1 = ft_split(av[2], ' ');
 	vars.cmd2 = ft_split(av[3], ' ');
 	vars.envp = envp;
@@ -27,13 +32,6 @@ int	main(int ac, char **av, char **envp)
 	vars.outfile = open(vars.av[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (vars.outfile < 0)
 		ft_error("output open error", &vars);
-	if (ac != 5)
-	{
-		ft_printf("4 args needed <input> <cmd1> <cmd2> <output>\n");
-		free(vars.cmd1);
-		free(vars.cmd2);
-		exit(1);
-	}
 	ft_parsing_execve(&vars);
 	ft_pipex(&vars);
 	exit(0);
